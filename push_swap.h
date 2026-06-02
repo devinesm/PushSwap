@@ -6,7 +6,7 @@
 /*   By: fiolivei <fiolivei@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 00:00:00 by fiolivei          #+#    #+#             */
-/*   Updated: 2026/05/30 21:04:22 by fiolivei         ###   ########.fr       */
+/*   Updated: 2026/06/02 16:44:40 by ipinto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ t_node				*find_min(t_node *stack);
 t_node				*find_max(t_node *stack);
 
 /* sorts */
-int     			ft_sqrt(int number);
+int					ft_sqrt(int number);
 void				assign_index(t_stacks *s);
 void				sort_three(t_stacks *s);
 int					find_position_of_min(t_node *a);
