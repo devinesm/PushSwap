@@ -97,6 +97,7 @@ double				compute_disorder(t_node *stack);
 void				sort_complex(t_stacks *s);
 void				sort_medium(t_stacks *s);
 void				sort_simple(t_stacks *s);
+void				sort_turk(t_stacks *s);
 void				sort(t_stacks *s, char *strategy);
 
 /* utils */

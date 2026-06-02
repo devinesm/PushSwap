@@ -20,7 +20,7 @@ static void	execute_strategy(t_stacks *s, int strategy_type)
 	else if (strategy_type == STRATEGY_MEDIUM)
 		sort_medium(s);
 	else
-		sort_complex(s);
+		sort_turk(s);
 }
 
 void	sort(t_stacks *s, char *strategy)

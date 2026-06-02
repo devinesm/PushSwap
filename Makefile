@@ -17,6 +17,7 @@ SRCS    =	src/ops/swap.c \
 			src/sort/sort_complex.c \
 			src/sort/sort_medium.c \
 			src/sort/sort_simple.c \
+			src/sort/sort_turk.c \
 			src/sort/sort.c \
 			src/utils/args_utils.c \
 			src/utils/bench_print_helpers.c \
