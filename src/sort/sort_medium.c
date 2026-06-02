@@ -3,88 +3,106 @@
 /*                                                        :::      ::::::::   */
 /*   sort_medium.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ipinto-m <ipinto-m@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ipinto-m <ipinto-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/31 17:24:00 by ipinto-m          #+#    #+#             */
-/*   Updated: 2026/05/31 17:24:00 by ipinto-m         ###   ########.fr       */
+/*   Created: 2026/06/02 14:58:40 by ipinto-m          #+#    #+#             */
+/*   Updated: 2026/06/02 15:45:01 by ipinto-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../push_swap.h"
 
-static void	assign_index(t_stacks *s)
+static int     get_chunk_size(int size)
 {
-	t_node	*curr;
-	t_node	*cmp;
-	int		count;
+    int chunk;
 
-	curr = s->a;
-	while (curr)
-	{
-		count = 0;
-		cmp = s->a;
-		while (cmp)
-		{
-			if (cmp->value < curr->value)
-				count++;
-			cmp = cmp->next;
-		}
-		curr->index = count;
-		curr = curr->next;
-	}
+    chunk = ft_sqrt(size) * 2;
+    if (chunk == 0)
+        chunk = 1;
+    return (chunk);
 }
 
-static int	get_max_bits(t_stacks *s)
+static void     push_chunks_to_b(t_stacks *s, int chunk_size)
 {
-	int	size;
-	int	max_index;
-	int	max_bits;
+    int     limit;
 
-	size = stack_size(s->a);
-	max_index = size - 1;
-	max_bits = 0;
-	while (max_index > 0)
-	{
-		max_bits++;
-		max_index = max_index >> 1;
-	}
-	return (max_bits);
+    limit = chunk_size;
+    while (s->a != NULL)
+    {
+        if (s->a->index < limit)
+        {
+            op_pb(s);
+            if (s->b->index < (limit - (chunk_size / 2)))
+                op_rb(s);
+        }
+        else
+            op_ra(s);
+        if (stack_size(s->b) >= limit)
+            limit += chunk_size;
+    }
 }
 
-static void	execute_radix(t_stacks *s, int max_bits)
+static int      get_max_pos(t_node *stack)
 {
-	int		size;
-	int		i;
-	int		j;
-	int		atual_bit;
-	t_node	*top;
+    t_node  *tmp;
+    int     max_idx;
+    int     max_pos;
+    int     pos;
 
-	i = 0;
-	size = stack_size(s->a);
-	while (i < max_bits)
-	{
-		j = 0;
-		while (j < size)
-		{
-			top = s->a;
-			atual_bit = (top->index >> i) & 1;
-			if (atual_bit == 1)
-				op_ra(s);
-			else
-				op_pb(s);
-			j++;
-		}
-		while (s->b)
-			op_pa(s);
-		i++;
-	}
+    tmp = stack;
+    max_idx = -1;
+    max_pos = 0;
+    pos = 0;
+    while (tmp != NULL)
+    {
+        if (tmp->index > max_idx)
+        {
+            max_idx = tmp->index;
+            max_pos = pos;
+        }
+        pos++;
+        tmp = tmp->next;
+    }
+    return (max_pos);
 }
 
-void	sort_medium(t_stacks *s)
+static void     push_max_to_a(t_stacks *s)
 {
-	int	max_bits;
+    int size;
+    int max_pos;
+    
+    while (s->b != NULL)
+    {
+        size = stack_size(s->b);
+        max_pos = get_max_pos(s->b);
+        if (max_pos <= size / 2)
+        {
+            while (max_pos > 0)
+            {
+                op_rb(s);
+                max_pos--;
+            }
+        }
+        else
+        {
+            while (max_pos < size)
+            {
+                op_rrb(s);
+                max_pos++;
+            }
+        }
+        op_pa(s);
+    }
+}
 
-	assign_index(s);
-	max_bits = get_max_bits(s);
-	execute_radix(s, max_bits);
+void            sort_medium(t_stacks *s)
+{
+    int size;
+    int chunk_size;
+
+    size = stack_size(s->a);
+    assign_index(s);
+    chunk_size = get_chunk_size(size);
+    push_chunks_to_b(s, chunk_size);
+    push_max_to_a(s);
 }

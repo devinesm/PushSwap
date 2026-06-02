@@ -22,6 +22,7 @@ SRCS    =	src/ops/swap.c \
 			src/utils/bench_print_helpers.c \
 			src/utils/bench_utils.c \
 			src/utils/sorts_utils.c \
+			src/utils/sorts2_utils.c \
 			src/utils/stack_utils.c \
 			src/utils/turk_utils.c \
 			src/utils/turk_utils2.c \

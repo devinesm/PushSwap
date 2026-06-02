@@ -119,6 +119,8 @@ t_node				*find_min(t_node *stack);
 t_node				*find_max(t_node *stack);
 
 /* sorts */
+int     			ft_sqrt(int number);
+void				assign_index(t_stacks *s);
 void				sort_three(t_stacks *s);
 int					find_position_of_min(t_node *a);
 int					max_int(int a, int b);
