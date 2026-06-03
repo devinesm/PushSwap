@@ -24,7 +24,7 @@ void	sort_simple(t_stacks *s)
 			op_sa(s);
 		return ;
 	}
-	while (size > 3)
+	while (size > 3 && !is_sorted(s->a))
 	{
 		min_pos = find_position_of_min(s->a);
 		if (min_pos <= size / 2)
