@@ -83,7 +83,13 @@ static void	execute_radix(t_stacks *s, int max_bits)
 void	sort_complex(t_stacks *s)
 {
 	int	max_bits;
+	int	size;
 
+	size = stack_size(s->a);
+	if (size <= 3)
+		return (sort_three(s));
+	if (size <= 5)
+		return (sort_five(s));
 	assign_index(s);
 	max_bits = get_max_bits(s);
 	execute_radix(s, max_bits);

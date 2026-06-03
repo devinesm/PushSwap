@@ -2,9 +2,12 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   sort_simple.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ipinto-m <ipinto-m@student.42porto.com>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
+/*                                                    +:+ +:+        
+	+:+     */
+/*   By: ipinto-m <ipinto-m@student.42porto.com>    +#+  +:+      
+	+#+        */
+/*                                                +#+#+#+#+#+  
+	+#+           */
 /*   Created: 2026/05/08 08:12:16 by fiolivei          #+#    #+#             */
 /*   Updated: 2026/05/31 15:15:37 by ipinto-m         ###   ########.fr       */
 /*                                                                            */
@@ -18,12 +21,10 @@ void	sort_simple(t_stacks *s)
 	int	min_pos;
 
 	size = stack_size(s->a);
-	if (size == 2)
-	{
-		if (s->a->value > s->a->next->value)
-			op_sa(s);
-		return ;
-	}
+	if (size <= 3)
+		return (sort_three(s));
+	if (size <= 5)
+		return (sort_five(s));
 	while (size > 3 && !is_sorted(s->a))
 	{
 		min_pos = find_position_of_min(s->a);

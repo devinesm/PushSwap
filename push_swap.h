@@ -123,6 +123,7 @@ t_node				*find_max(t_node *stack);
 int					ft_sqrt(int number);
 void				assign_index(t_stacks *s);
 void				sort_three(t_stacks *s);
+void				sort_five(t_stacks *s);
 int					find_position_of_min(t_node *a);
 int					max_int(int a, int b);
 int					min_int(int a, int b);
