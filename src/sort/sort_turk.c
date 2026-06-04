@@ -80,6 +80,10 @@ void	sort_turk(t_stacks *s)
 {
 	t_cost	cost;
 
+	if (stack_size(s->a) <= 3)
+		return (sort_three(s));
+	if (stack_size(s->a) <= 5)
+		return (sort_five(s));
 	while (stack_size(s->a) > 3)
 	{
 		find_cheapest(s, &cost);

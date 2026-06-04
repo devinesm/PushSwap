@@ -27,6 +27,7 @@ SRCS    =	src/ops/swap.c \
 			src/utils/stack_utils.c \
 			src/utils/turk_utils.c \
 			src/utils/turk_utils2.c \
+			src/bench.c \
 			src/main.c \
 			src/parse_args.c
 

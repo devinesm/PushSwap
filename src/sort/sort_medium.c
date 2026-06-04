@@ -101,6 +101,10 @@ void	sort_medium(t_stacks *s)
 	int	chunk_size;
 
 	size = stack_size(s->a);
+	if (size <= 3)
+		return (sort_three(s));
+	if (size <= 5)
+		return (sort_five(s));
 	assign_index(s);
 	chunk_size = get_chunk_size(size);
 	push_chunks_to_b(s, chunk_size);

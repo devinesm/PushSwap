@@ -32,14 +32,16 @@ void	op_rra(t_stacks *s)
 {
 	reverse_rotate(&s->a);
 	s->benchmarks.rra++;
-	write(1, "rra\n", 4);
+	if (!s->benchmarks.count_only)
+		write(1, "rra\n", 4);
 }
 
 void	op_rrb(t_stacks *s)
 {
 	reverse_rotate(&s->b);
 	s->benchmarks.rrb++;
-	write(1, "rrb\n", 4);
+	if (!s->benchmarks.count_only)
+		write(1, "rrb\n", 4);
 }
 
 void	op_rrr(t_stacks *s)
@@ -47,5 +49,6 @@ void	op_rrr(t_stacks *s)
 	reverse_rotate(&s->a);
 	reverse_rotate(&s->b);
 	s->benchmarks.rrr++;
-	write(1, "rrr\n", 4);
+	if (!s->benchmarks.count_only)
+		write(1, "rrr\n", 4);
 }
