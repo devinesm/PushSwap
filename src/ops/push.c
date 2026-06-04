@@ -23,8 +23,7 @@ void	op_pa(t_stacks *s)
 	node->next = s->a;
 	s->a = node;
 	s->benchmarks.pa++;
-	if (!s->benchmarks.count_only)
-		write(1, "pa\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	op_pb(t_stacks *s)
@@ -38,6 +37,5 @@ void	op_pb(t_stacks *s)
 	node->next = s->b;
 	s->b = node;
 	s->benchmarks.pb++;
-	if (!s->benchmarks.count_only)
-		write(1, "pb\n", 3);
+	write(1, "pb\n", 3);
 }

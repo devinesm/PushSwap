@@ -32,16 +32,14 @@ void	op_ra(t_stacks *s)
 {
 	rotate(&s->a);
 	s->benchmarks.ra++;
-	if (!s->benchmarks.count_only)
-		write(1, "ra\n", 3);
+	write(1, "ra\n", 3);
 }
 
 void	op_rb(t_stacks *s)
 {
 	rotate(&s->b);
 	s->benchmarks.rb++;
-	if (!s->benchmarks.count_only)
-		write(1, "rb\n", 3);
+	write(1, "rb\n", 3);
 }
 
 void	op_rr(t_stacks *s)
@@ -49,6 +47,5 @@ void	op_rr(t_stacks *s)
 	rotate(&s->a);
 	rotate(&s->b);
 	s->benchmarks.rr++;
-	if (!s->benchmarks.count_only)
-		write(1, "rr\n", 3);
+	write(1, "rr\n", 3);
 }

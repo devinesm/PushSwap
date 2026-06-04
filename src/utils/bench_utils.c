@@ -17,7 +17,7 @@ void	bench_init(t_bench *b, t_strategy mode, int enabled)
 	ft_bzero(b, sizeof(t_bench));
 	b->mode = mode;
 	b->executed = mode;
-	b->enabled = (enabled == 1);
+	b->enabled = enabled;
 }
 
 t_strategy	get_strategy_from_flag(const char *flag)
@@ -53,8 +53,13 @@ const char	*get_strategy_complexity(t_strategy s)
 	return ("");
 }
 
-int	bench_total(t_bench *b)
+void	print_bench(t_bench *b)
 {
-	return (b->sa + b->sb + b->ss + b->pa + b->pb
-		+ b->ra + b->rb + b->rr + b->rra + b->rrb + b->rrr);
+	if (!b->enabled)
+		return ;
+	print_disorder(b);
+	print_strategy(b);
+	print_total(b);
+	print_ops_line1(b);
+	print_ops_line2(b);
 }
