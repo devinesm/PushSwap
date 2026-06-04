@@ -33,11 +33,7 @@ void	print_strategy(t_bench *b)
 
 void	print_total(t_bench *b)
 {
-	int	total;
-
-	total = b->sa + b->sb + b->ss + b->ra + b->rb + b->rr + b->rra + b->rrb
-		+ b->rrr + b->pa + b->pb;
-	ft_dprintf(2, "[bench] total ops: %d\n", total);
+	ft_dprintf(2, "[bench] total ops: %d\n", bench_total(b));
 }
 
 void	print_ops_line1(t_bench *b)

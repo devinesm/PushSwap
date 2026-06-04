@@ -80,7 +80,7 @@ int	main(int argc, char **argv)
 		error_exit(&s);
 	if (!is_sorted(s.a))
 		sort(&s, strategy);
-	if (bench_mode)
+	if (bench_mode == 1)
 		print_bench(&s.benchmarks);
 	free_stack(&(s.a));
 	return (0);

@@ -51,6 +51,7 @@ typedef struct s_bench
 	t_strategy		executed;
 	double			disorder;
 	int				enabled;
+	int				count_only;
 
 }					t_bench;
 
@@ -107,11 +108,10 @@ int					append_node(t_node **stack, int value);
 
 /* bench */
 void				bench_init(t_bench *b, t_strategy mode, int enabled);
+int					bench_total(t_bench *b);
 t_strategy			get_strategy_from_flag(const char *flag);
 const char			*get_strategy_name(t_strategy s);
 const char			*get_strategy_complexity(t_strategy s);
-void				print_bench(t_bench *b);
-
 /* stacks */
 void				free_stack(t_node **stack);
 int					is_sorted(t_node *stack);
