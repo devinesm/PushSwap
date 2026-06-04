@@ -128,6 +128,12 @@ int					find_position_of_min(t_node *a);
 int					max_int(int a, int b);
 int					min_int(int a, int b);
 
+/* simple sort */
+int					calc_cost(int pos, int size);
+int					get_min_pos(t_node *stack);
+int					get_target_b(t_node *stack_b, int index_a);
+int					get_target_a(t_node *stack_a, int index_b);
+
 /* turk sort */
 void				execute_move(t_cost *c, t_stacks *s);
 int					target_position_in_b(int x, t_node *b);

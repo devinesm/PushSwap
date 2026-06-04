@@ -28,7 +28,8 @@ SRCS    =	src/ops/swap.c \
 			src/utils/turk_utils.c \
 			src/utils/turk_utils2.c \
 			src/main.c \
-			src/parse_args.c
+			src/parse_args.c \
+			src/utils/sort_utils_simple.c
 
 OBJS    = $(SRCS:.c=.o)
 
